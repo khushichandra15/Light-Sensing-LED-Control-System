@@ -1,0 +1,1 @@
+Designed and implemented an Arduino Nano-based automatic light control system using an LDR sensor to monitor ambient light intensity and automatically control an LED based on surrounding brightness levels. The system was programmed using the Arduino IDE, demonstrating real-time sensor interfacing, analog signal processing, and embedded system control.
