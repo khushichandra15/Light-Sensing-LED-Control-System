@@ -1,0 +1,43 @@
+#include <ESP32Servo.h>
+
+Servo servoX;
+Servo servoY;
+
+const int laserPin = 5;  // Pin for HW-493 Laser module
+
+void setup() {
+  // Attach servos to respective pins
+  servoX.attach(12);
+  servoY.attach(14);
+
+  // Set laser pin as output
+  pinMode(laserPin, OUTPUT);
+
+  // Initialize positions
+  servoX.write(90);  // Center position
+  servoY.write(90);  // Center position
+
+  // Turn on laser
+  digitalWrite(laserPin, HIGH);
+}
+
+void loop() {
+  // Sweep from 60 to 120 degrees for both servos
+  for (int angle = 60; angle <= 120; angle++) {
+    servoX.write(angle);
+    servoY.write(180 - angle);  // Opposite sweep for Y-axis
+    delay(20);
+  }
+
+  delay(500); // Hold at max
+
+  for (int angle = 120; angle >= 60; angle--) {
+    servoX.write(angle);
+    servoY.write(180 - angle);
+    delay(20);
+  }
+
+  delay(500); // Hold at min
+
+
+}
